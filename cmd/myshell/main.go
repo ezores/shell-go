@@ -72,25 +72,13 @@ func main() {
 			}
 
 		case strings.HasPrefix(cmd, "cd"):
-			args := strings.Split(cmd, " ")
-			if args[0] == "cd" {
-				if len(args) == 1 {
-					homeDir, err := os.UserHomeDir()
-					if err != nil {
-						fmt.Fprintln(os.Stdout, err)
-					} else {
-						err := os.Chdir(homeDir)
-						if err != nil {
-							fmt.Fprintln(os.Stdout, err)
-						}
-					}
-				} else {
-					err := os.Chdir(args[1])
-					if err != nil {
-						fmt.Fprintln(os.Stdout, err)
-					}
-				}
-			}	
+            args := strings.Split(cmd, " ")
+            if args[0] == "cd" {
+                err := os.Chdir(args[1])
+                if err != nil {
+                    fmt.Fprintln(os.Stdout, "cd: " + args[1] + ": No such file or directory")
+                }
+            }
 			
         default:
             //fmt.Fprint(os.Stdout, cmd +": command not found\n")		
