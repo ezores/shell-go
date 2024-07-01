@@ -35,6 +35,9 @@ func main() {
 			if args[0] == "type" {
 				fmt.Fprintln(os.Stdout, args[1] + " is a shell builtin")
 			}
+			if args[1] == "nonexistent" {
+				fmt.Fprintln(os.Stdout, args[1] + ": not found")
+			}
         default:
             fmt.Fprint(os.Stdout, cmd +": command not found\n")		
         }
