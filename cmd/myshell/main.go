@@ -68,7 +68,7 @@ func main() {
             externalCmd := exec.Command(args[0], args[1:]...)
             output, err := externalCmd.Output()
             if err != nil {
-                fmt.Fprintln(os.Stderr, err)
+                fmt.Fprintln(os.Stdout, args[0] + ": command not found")
             } else {
                 fmt.Fprint(os.Stdout, string(output))
             }
