@@ -62,6 +62,15 @@ func main() {
 					}
 				}
 			}
+		
+		case cmd == "pwd":
+			dir, err := os.Getwd()
+			if err != nil {
+				fmt.Fprintln(os.Stdout, err)
+			} else {
+				fmt.Fprintln(os.Stdout, dir)
+			}
+			
         default:
             //fmt.Fprint(os.Stdout, cmd +": command not found\n")		
 			args := strings.Split(cmd, " ")
