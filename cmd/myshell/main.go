@@ -47,7 +47,7 @@ func main() {
 		case strings.HasPrefix(cmd, "type"):
 			args := strings.Split(cmd, " ")
 			if args[0] == "type" {
-				if args[1] == "echo" || args[1] == "exit" || args[1] == "type" {
+				if args[1] == "echo" || args[1] == "exit" || args[1] == "type" || args[1] == "pwd"{
 					fmt.Fprintln(os.Stdout, args[1] + " is a shell builtin")
 				} else if args[1] == "nonexistent" || args[1] == "nonexistentcommand" {
 					fmt.Fprintln(os.Stdout, args[1] + ": not found")	
