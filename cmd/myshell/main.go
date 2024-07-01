@@ -33,7 +33,7 @@ func main() {
 			// if we enter type echo, it will print "echo is a shell command builtin"
 			args := strings.Split(cmd, " ")
 			if args[0] == "type" {
-				fmt.Fprintln(os.Stdout, args[1] + " is a shell command builtin")
+				fmt.Fprintln(os.Stdout, args[1] + " is a shell builtin")
 			}
         default:
             fmt.Fprint(os.Stdout, cmd +": command not found\n")		
