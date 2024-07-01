@@ -63,7 +63,15 @@ func main() {
 				}
 			}
         default:
-            fmt.Fprint(os.Stdout, cmd +": command not found\n")		
+            //fmt.Fprint(os.Stdout, cmd +": command not found\n")		
+			args := strings.Split(cmd, " ")
+            externalCmd := exec.Command(args[0], args[1:]...)
+            output, err := externalCmd.Output()
+            if err != nil {
+                fmt.Fprintln(os.Stderr, err)
+            } else {
+                fmt.Fprint(os.Stdout, string(output))
+            }
         }
     }
 }
