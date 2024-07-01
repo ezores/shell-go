@@ -27,7 +27,10 @@ func main() {
 		case "exit 0": 
 			os.Exit(0)
 		case "echo"
-			fmt.Fprint(os.Stdout, cmd +"\n")
+				args := strings.Split(cmd, " ")
+				if args[0] == "echo" {
+					fmt.Fprintln(os.Stdout, strings.Join(args[1:], " "))
+				}
 		default:
 			fmt.Fprint(os.Stdout, cmd +": command not found\n")		
 	}
