@@ -5,6 +5,7 @@ import (
     "fmt"
     "os"
     "strings"
+	"os/exec"
 )
 
 func main() {
@@ -32,7 +33,7 @@ func main() {
 		case strings.HasPrefix(cmd, "type"):
 			// if we enter type echo, it will print "echo is a shell command builtin"
 			args := strings.Split(cmd, " ")
-			if args[0] == "type" {
+			/*if args[0] == "type" {
 				if args[1] == "nonexistent" {
 					fmt.Fprintln(os.Stdout, args[1] + ": not found")
 				} else if args[1] == "nonexistentcommand" {
@@ -41,6 +42,14 @@ func main() {
 					fmt.Fprintln(os.Stdout, args[1] + " is /bin/cat")
 				} else {
 					fmt.Fprintln(os.Stdout, args[1] + " is a shell builtin")
+				}*/
+
+			if args[0] == "type" {
+				path, err := exec.LookPath(args[1])
+				if err != nil {
+					fmt.Fprintln(os.Stdout, args[1] + ": not found")
+				} else {
+					fmt.Fprintln(os.Stdout, args[1] + " is " + path)
 				}
 			}
         default:
