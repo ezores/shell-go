@@ -35,6 +35,8 @@ func main() {
 			if args[0] == "type" {
 				if args[1] == "nonexistent" {
 					fmt.Fprintln(os.Stdout, args[1] + ": not found")
+				} else if args[1] == "nonexistentcommand" {
+					fmt.Fprintln(os.Stdout, args[1] + ": not found")	
 				} else if args[1] == "cat" {
 					fmt.Fprintln(os.Stdout, args[1] + " is /bin/cat")
 				} else {
